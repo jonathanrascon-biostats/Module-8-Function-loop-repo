@@ -77,3 +77,6 @@ for(i in 1:nrow(patients)) {
 }
 
 data <- data.frame(cbind(ID, patients, BMI, category))
+
+qf(.95, 35, 29)
+
