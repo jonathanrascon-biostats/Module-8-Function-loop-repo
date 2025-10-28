@@ -77,3 +77,76 @@ for(i in 1:nrow(patients)) {
 }
 
 data <- data.frame(cbind(ID, patients, BMI, category))
+
+y <- factor(rbinom(100, 1, 0.3))
+x <- rnorm(100, ifelse(y == 0, 0, 0.75))
+
+#above we are creating a random dataset. the y object is a randomly assigned
+#series of 1s and 0s. The x object is a randomly assigned two sample data set
+#where the mean is defined by the ifelse statement. It is easy to imagine
+#aslo assigning the sd in this way, or creating more conditions.
+
+xy.random <- data.frame(cbind(y, x))
+y
+print(xy.random$y)
+#WTF!!!
+
+mean(x)
+
+#while loop examples
+
+arrivals <- c()
+time <- 0
+next_arrival <- rexp(1, rate = 3)
+
+while(time+next_arrival <= 10){
+  # Update list of arrivals and current time
+  arrivals <- c(arrivals, next_arrival)
+  time <- time + next_arrival
+
+  # Generate the next arrival
+  next_arrival <- rexp(1, rate = 3)
+}
+
+arrivals
+
+
+#create loop: 2.3^x >= 100, find smallest integer x
+
+test <- function(x){2.3^x}
+i <- 1
+
+while(test(i)<=100){
+  i <- i+1
+  value <- test(i)
+  print(value)
+}
+
+numbers <- c(-10, 0, 5, -3, 8)
+
+for (i in numbers) {
+  ifelse(i > 0, print(paste(i, "is positive")), 
+         ifelse(i <0, print(paste(i, "is negative")), 
+              print(paste(i, "is zero"))))
+}
+
+#debugging code: use the browser() function OR place the options()
+#function in the console: options(error=recovery), to turn off
+#change options(error=NULL). HIT 0 to exit "options" mode.
+
+
+#random walk while loop!!
+x <- 0
+n <- 0
+data.n <- c()
+data.x <- c()
+while (n < 4) {
+  x <- runif(1, min =-1, max=1)
+  n <- n + x
+  data.n <- c(data.n, n)
+  data.x <- c(data.x, x)
+}
+length(data.x)
+
+head(data.x, n=10)
+head(data.n, n=10)
